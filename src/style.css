@@ -1,0 +1,40 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+:root {
+  /* Font */
+  --font-family-headings: "Cinzel", serif; /* Top-level categories: bold 900 (black); Menu items: bold 700 (bold)*/
+  --font-family-paragraph: "Raleway", sans-serif;
+
+  /* Color - Source: https://www.happyhues.co/palettes/5 */
+  --color-primary: #f2f7f5;
+  --color-paragraph: #475d5b;
+  --color-secondary1: rgba(0, 71, 62, 1);
+  --color-secondary1-translucent: rgba(0, 71, 62, 0.97);
+  --color-secondary1-headline: #fffffe;
+  --color-secondary1-sub-headline: #f2f7f5;
+  --color-secondary1-stroke: #00332c;
+  --color-highlight: #faae2b;
+
+  /* Size */
+  --content-width: 97vw;
+  --content-width-max: 750px;
+  --font-size-main: 1.5em;
+  --content-box-padding: 1.25em;
+  --input-padding: 0.625em;
+  --font-size-input: 0.9em;
+  --font-size-submit: 1.3em;
+}
+
+body {
+  color: var(--color-paragraph);
+  font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-main);
+}
