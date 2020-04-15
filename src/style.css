@@ -1,5 +1,34 @@
+:root {
+  /* Font */
+  /* Font ideas from https://www.quicksprout.com/best-font-for-website/ */
+  /* Font sources: https://fonts.google.com/specimen/Raleway and https://fonts.google.com/specimen/Cinzel */
+  --font-family-headings: "Cinzel", serif; /* Top-level categories: bold 900 (black); Menu items: bold 700 (bold)*/
+  --font-family-paragraph: "Raleway", sans-serif;
+
+  /* Color - Source: https://www.happyhues.co/palettes/3 */
+  --color-primary: #fffffe;
+  --color-paragraph: #5f6c7b;
+  --color-secondary1: #d8eefe;
+  --color-secondary1-headline: #094067;
+  --color-secondary1-sub-headline: #5f6c7b;
+  --color-secondary1-stroke: #094067;
+  --color-highlight: #3da9fc;
+  --color-tertiary: #ef4565; /*rgb(239,69,101)*/
+
+  /* Size */
+  --header-height: 55px;
+  --content-width: 97vw;
+  --content-width-max: 750px;
+  --font-size-main: 1.5em;
+  --padding-content-box: 0.5em;
+  --padding-input: 0.625em;
+  --font-size-input: 0.9em;
+  --font-size-submit: 1.3em;
+}
+
 html {
   box-sizing: border-box;
+  scroll-padding-top: var(--header-height);
 }
 
 *,
@@ -8,33 +37,137 @@ html {
   box-sizing: inherit;
 }
 
-:root {
-  /* Font */
-  --font-family-headings: "Cinzel", serif; /* Top-level categories: bold 900 (black); Menu items: bold 700 (bold)*/
-  --font-family-paragraph: "Raleway", sans-serif;
-
-  /* Color - Source: https://www.happyhues.co/palettes/5 */
-  --color-primary: #f2f7f5;
-  --color-paragraph: #475d5b;
-  --color-secondary1: rgba(0, 71, 62, 1);
-  --color-secondary1-translucent: rgba(0, 71, 62, 0.97);
-  --color-secondary1-headline: #fffffe;
-  --color-secondary1-sub-headline: #f2f7f5;
-  --color-secondary1-stroke: #00332c;
-  --color-highlight: #faae2b;
-
-  /* Size */
-  --content-width: 97vw;
-  --content-width-max: 750px;
-  --font-size-main: 1.5em;
-  --content-box-padding: 1.25em;
-  --input-padding: 0.625em;
-  --font-size-input: 0.9em;
-  --font-size-submit: 1.3em;
-}
-
 body {
   color: var(--color-paragraph);
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  scroll-padding-top: var(--header-height);
+}
+
+.content-container {
+  width: 100%;
+}
+
+.header {
+  padding: var(--padding-content-box);
+  position: fixed;
+  width: 100%;
+  height: var(--header-height);
+}
+
+.header,
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--color-secondary1);
+}
+
+.header .company-logo-icon {
+  /* Ways to color SVG dynamically:
+  * Add colors to SVG file: http://andresgalante.com/RGBAtoFeColorMatrix/ - along with this implementation: https://stackoverflow.com/a/54000884/2033465
+    * filter: url(#colorChange); #colorChange references filter id in ./assets/tea-cup-logo.svg.
+  * Convert hex color to filter: use https://codepen.io/sosuke/pen/Pjoqqp to generate a filter - along with this implementation: https://stackoverflow.com/a/43960991/2033465
+  
+  * The first option didn't work, likely due to webpack processing--will look that at later.
+    The second option had an imprecise color conversion.
+    Therefore, I decided to set the fill color in the svg file.
+  */
+  height: 32px;
+  width: 32px;
+}
+
+.nav-bar {
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.nav-link {
+  color: var(--color-secondary1-headline);
+  font-family: var(--font-family-headings);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--padding-content-box);
+  margin-top: var(--header-height);
+}
+
+.main > div {
+  width: 100%;
+  max-width: 70%;
+}
+
+.main__headline {
+  text-align: center;
+}
+
+.form-sign-up {
+  display: flex;
+  justify-content: center;
+}
+
+.main__headline input {
+  font-family: var(--font-family-paragraph);
+  padding: var(--padding-input);
+  background-color: var(--color-primary);
+  color: var(--color-paragraph);
+  border-color: var(--color-secondary1-stroke);
+  border-radius: calc(var(--padding-input) / 2);
+  width: 100%;
+  max-width: 40%;
+}
+
+.main__headline input.input-button {
+  background-color: var(--color-highlight);
+  color: var(--color-primary);
+  padding: var(--padding-input);
+  border: none;
+  border-radius: calc(var(--padding-input) / 2);
+  margin-left: var(--padding-input);
+  width: auto;
+}
+
+.main__content {
+}
+
+.iframe-responsive-wrapper--16x9 {
+  position: relative;
+  max-height: calc(var(--content-width-max * 0.5625));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-headings);
+  font-weight: bold;
+  color: var(--color-secondary1-headline);
+}
+
+@media (max-width: 750px) {
+  .header,
+  .nav-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main > div {
+    max-width: 98%;
+  }
+
+  .main__headline input {
+    max-width: 65%;
+  }
 }

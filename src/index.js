@@ -1,3 +1,4 @@
+require("../src/style-common.css");
 require("../src/style.css");
 import bodyContent from "../src/body-content.html";
 

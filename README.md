@@ -8,6 +8,8 @@ A simple responsive product landing page that shows love for a favorite beverage
 
 ## Demonstrated concepts
 
-- Coming soon...
+- Sticky header
+- Accessible semantic elements
+- SVG color changing (with help!)
 
 **See also:** [Common concepts, config, and documentation](https://github.com/alight1/template-webpack-with-s3-hosting#common)
