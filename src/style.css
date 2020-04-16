@@ -2,18 +2,18 @@
   /* Font */
   /* Font ideas from https://www.quicksprout.com/best-font-for-website/ */
   /* Font sources: https://fonts.google.com/specimen/Raleway and https://fonts.google.com/specimen/Cinzel */
-  --font-family-headings: "Cinzel", serif; /* Top-level categories: bold 900 (black); Menu items: bold 700 (bold)*/
-  --font-family-paragraph: "Raleway", sans-serif;
+  --font-family-headings: "Asar", serif; /* Top-level categories: bold 900 (black); Menu items: bold 700 (bold)*/
+  --font-family-paragraph: "Asar", serif;
 
   /* Color - Source: https://www.happyhues.co/palettes/3 */
-  --color-primary: #fffffe;
-  --color-paragraph: #5f6c7b;
-  --color-secondary1: #d8eefe;
-  --color-secondary1-headline: #094067;
-  --color-secondary1-sub-headline: #5f6c7b;
-  --color-secondary1-stroke: #094067;
-  --color-highlight: #3da9fc;
-  --color-tertiary: #ef4565; /*rgb(239,69,101)*/
+  --color-primary: #f9f4ef;
+  --color-paragraph: #716040;
+  --color-secondary1: #eaddcf;
+  --color-secondary1-headline: #020826;
+  --color-secondary1-sub-headline: #716040;
+  --color-secondary1-stroke: #020826;
+  --color-highlight: #8c7851;
+  --color-tertiary: #f25042; /*rgb(242, 80, 66)*/
 
   /* Size */
   --header-height: 55px;
@@ -68,6 +68,11 @@ body {
 }
 
 .header .company-logo-icon {
+  height: 32px;
+  width: 141px;
+}
+
+.accent-icon {
   /* Ways to color SVG dynamically:
   * Add colors to SVG file: http://andresgalante.com/RGBAtoFeColorMatrix/ - along with this implementation: https://stackoverflow.com/a/54000884/2033465
     * filter: url(#colorChange); #colorChange references filter id in ./assets/tea-cup-logo.svg.
@@ -144,6 +149,7 @@ body {
   max-height: calc(var(--content-width-max * 0.5625));
   left: 50%;
   transform: translateX(-50%);
+  max-width: 60%;
 }
 
 h2,
