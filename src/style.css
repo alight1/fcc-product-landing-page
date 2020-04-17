@@ -43,19 +43,13 @@ body {
   color: var(--color-paragraph);
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0;
-}
-
-.content-container {
-  width: 100%;
 }
 
 .header {
   padding: var(--padding-content-box);
   position: fixed;
+  top: 0px;
   width: 100%;
   z-index: 10;
   height: calc(var(--header-height) * var(--header-height-adjust-ratio));
@@ -145,17 +139,32 @@ body {
   width: 32px;
 }
 
+.main__content {
+  max-width: var(--content-width-max);
+}
+
 .iframe-responsive-wrapper--16x9 {
   position: relative;
-  max-height: calc(var(--content-width-max * 0.5625));
+  max-height: calc(var(--content-width-max) * 0.5625);
   left: 50%;
   transform: translateX(-50%);
-  width: var(--content-width);
+  /* width: var(--content-width); */
+  width: 100%;
   max-width: calc(var(--font-size-main) * 21);
 }
 
-/* Just for fun: apply Fibonacci Sequence to h1 and h2, then 15% smaller from there 
-  This would be a good place to use SCSS mixin, sqrt function */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-headings);
+  font-weight: bold;
+  color: var(--color-secondary1-headline);
+}
+
+/* Just for fun: apply Fibonacci Sequence to h1 and h2. */
 h1 {
   font-size: calc(var(--font-size-main) * (var(--font-size-heading-step) * 13));
 }
@@ -166,7 +175,7 @@ h3,
 h4,
 h5,
 h6 {
-  --size-step: 0.85;
+  --size-step: 0.85; /* 15% smaller from h2. This would be a good place to use SCSS mixin, e.g. sqrt function. */
 }
 h3 {
   font-size: calc(
@@ -205,20 +214,25 @@ h6 {
   );
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-headings);
-  font-weight: bold;
-  color: var(--color-secondary1-headline);
+.our-story {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.our-story__content {
+  max-width: calc(var(--font-size-main) * 13);
+  /* flex-grow: 1; */
+}
+
+.our-story__video {
+  /* flex-grow: 1; */
+  width: 100%;
 }
 
 @media (max-width: 750px) {
   :root {
     --header-height-adjust-ratio: 1.65;
-    --font-size-heading-step: 0.15;
+    --font-size-heading-step: 0.13;
   }
 
   .header {
@@ -230,4 +244,9 @@ h6 {
   .main__headline input {
     max-width: 65%;
   }
+
+  /* .our-story {
+    flex-direction: column;
+    align-items: flex-start;
+  } */
 }
