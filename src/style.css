@@ -17,18 +17,20 @@
 
   /* Size */
   --header-height: 55px;
+  --header-height-adjust-ratio: 1;
   --content-width: 97vw;
   --content-width-max: 750px;
-  --font-size-main: 1.5em;
+  --font-size-main: 1.2em;
+  --font-size-heading-step: 0.1625;
   --padding-content-box: 0.5em;
   --padding-input: 0.625em;
-  --font-size-input: 0.9em;
-  --font-size-submit: 1.3em;
 }
 
 html {
   box-sizing: border-box;
-  scroll-padding-top: var(--header-height);
+  scroll-padding-top: calc(
+    var(--header-height) * var(--header-height-adjust-ratio)
+  );
 }
 
 *,
@@ -45,7 +47,6 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  scroll-padding-top: var(--header-height);
 }
 
 .content-container {
@@ -56,7 +57,8 @@ body {
   padding: var(--padding-content-box);
   position: fixed;
   width: 100%;
-  height: var(--header-height);
+  z-index: 10;
+  height: calc(var(--header-height) * var(--header-height-adjust-ratio));
 }
 
 .header,
@@ -70,6 +72,63 @@ body {
 .header .company-logo-icon {
   height: 32px;
   width: 141px;
+}
+
+.nav-bar {
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 600px;
+}
+
+.nav-link {
+  color: var(--color-secondary1-headline);
+  font-family: var(--font-family-headings);
+  font-weight: 900;
+  font-size: calc(var(--font-size-main) * (var(--font-size-heading-step) * 5));
+  text-decoration: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--padding-content-box);
+  margin-top: calc(var(--header-height) * var(--header-height-adjust-ratio));
+}
+
+.main__headline {
+  text-align: center;
+}
+
+.form-sign-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__headline input {
+  font-family: var(--font-family-paragraph);
+  padding: var(--padding-input);
+  background-color: var(--color-primary);
+  color: var(--color-paragraph);
+  border-color: var(--color-secondary1-stroke);
+  border-radius: calc(var(--padding-input) / 2);
+  width: 100%;
+  max-width: 60%;
+}
+
+.form-sign-up .accent-icon {
+  margin-left: calc(var(--padding-input) / 2);
+}
+
+.main__headline input.input-button {
+  background-color: var(--color-highlight);
+  color: var(--color-primary);
+  padding: var(--padding-input);
+  border: none;
+  border-radius: calc(var(--padding-input) / 2);
+  margin-left: var(--padding-input);
+  width: auto;
 }
 
 .accent-icon {
@@ -86,70 +145,64 @@ body {
   width: 32px;
 }
 
-.nav-bar {
-  justify-content: space-evenly;
-  width: 80%;
-}
-
-.nav-link {
-  color: var(--color-secondary1-headline);
-  font-family: var(--font-family-headings);
-  font-weight: 900;
-  text-decoration: none;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 var(--padding-content-box);
-  margin-top: var(--header-height);
-}
-
-.main > div {
-  width: 100%;
-  max-width: 70%;
-}
-
-.main__headline {
-  text-align: center;
-}
-
-.form-sign-up {
-  display: flex;
-  justify-content: center;
-}
-
-.main__headline input {
-  font-family: var(--font-family-paragraph);
-  padding: var(--padding-input);
-  background-color: var(--color-primary);
-  color: var(--color-paragraph);
-  border-color: var(--color-secondary1-stroke);
-  border-radius: calc(var(--padding-input) / 2);
-  width: 100%;
-  max-width: 40%;
-}
-
-.main__headline input.input-button {
-  background-color: var(--color-highlight);
-  color: var(--color-primary);
-  padding: var(--padding-input);
-  border: none;
-  border-radius: calc(var(--padding-input) / 2);
-  margin-left: var(--padding-input);
-  width: auto;
-}
-
-.main__content {
-}
-
 .iframe-responsive-wrapper--16x9 {
   position: relative;
   max-height: calc(var(--content-width-max * 0.5625));
   left: 50%;
   transform: translateX(-50%);
-  max-width: 60%;
+  width: var(--content-width);
+  max-width: calc(var(--font-size-main) * 21);
+}
+
+/* Just for fun: apply Fibonacci Sequence to h1 and h2, then 15% smaller from there 
+  This would be a good place to use SCSS mixin, sqrt function */
+h1 {
+  font-size: calc(var(--font-size-main) * (var(--font-size-heading-step) * 13));
+}
+h2 {
+  font-size: calc(var(--font-size-main) * (var(--font-size-heading-step) * 8));
+}
+h3,
+h4,
+h5,
+h6 {
+  --size-step: 0.85;
+}
+h3 {
+  font-size: calc(
+    var(--font-size-main) *
+      (var(--font-size-heading-step) * (8 * var(--size-step)))
+  );
+}
+h4 {
+  font-size: calc(
+    var(--font-size-main) *
+      (
+        var(--font-size-heading-step) *
+          (8 * var(--size-step) * var(--size-step))
+      )
+  );
+}
+h5 {
+  font-size: calc(
+    var(--font-size-main) *
+      (
+        var(--font-size-heading-step) *
+          (8 * var(--size-step) * var(--size-step) * var(--size-step))
+      )
+  );
+}
+h6 {
+  font-size: calc(
+    var(--font-size-main) *
+      (
+        var(--font-size-heading-step) *
+          (
+            8 * var(--size-step) * var(--size-step) * var(--size-step) *
+              var(--size-step)
+          )
+      )
+  );
 }
 
 h2,
@@ -163,14 +216,15 @@ h6 {
 }
 
 @media (max-width: 750px) {
-  .header,
-  .nav-bar {
-    flex-direction: column;
-    align-items: center;
+  :root {
+    --header-height-adjust-ratio: 1.65;
+    --font-size-heading-step: 0.15;
   }
 
-  .main > div {
-    max-width: 98%;
+  .header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .main__headline input {
