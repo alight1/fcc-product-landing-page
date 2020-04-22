@@ -1,4 +1,4 @@
-<header id="header" class="header">
+<header id="header" class="header" role="banner">
   <img
     id="header-img"
     src="./assets/company-logo.png"
@@ -6,15 +6,24 @@
     alt=""
   />
 
-  <nav id="nav-bar" class="nav-bar">
+  <nav
+    id="nav-bar"
+    class="nav-bar"
+    role="navigation"
+    aria-label="Main Navigation"
+  >
     <a href="#our-story" class="nav-link">Our story</a>
     <a href="#why-fire-chai" class="nav-link">Why fire chai?</a>
     <a href="#shop" class="nav-link">Shop</a>
   </nav>
 </header>
-<main class="main">
-  <section class="main__headline-section">
-    <header class="main__page-header">
+<main class="main" role="main">
+  <section
+    class="main__headline-section"
+    role="region"
+    aria-labelledby="main-page-header"
+  >
+    <header id="main-page-header" class="main__page-header">
       Experience fire chai
     </header>
     <form
@@ -39,8 +48,10 @@
   </section>
 
   <div class="main__content">
-    <section id="our-story">
-      <header class="section-header">Our story</header>
+    <section role="region" aria-labelledby="our-story">
+      <header id="our-story" class="section-header">
+        Our story
+      </header>
       <div class="our-story">
         <div class="our-story__content">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ornare
@@ -61,8 +72,10 @@
         </div>
       </div>
     </section>
-    <section id="why-fire-chai">
-      <header class="section-header">Why fire chai?</header>
+    <section role="region" aria-labelledby="why-fire-chai">
+      <header id="why-fire-chai" class="section-header">
+        Why fire chai?
+      </header>
       <p>
         Morbi gravida semper eros at blandit. Ut ac ultricies nulla. Praesent
         rhoncus imperdiet ex a scelerisque. Nullam dignissim massa pharetra
@@ -76,8 +89,8 @@
         fermentum sit amet.
       </p>
     </section>
-    <section id="shop">
-      <header class="section-header">Shop</header>
+    <section role="region" aria-labelledby="shop">
+      <header id="shop" class="section-header">Shop</header>
       <div>
         <p>
           Nam eu ex porttitor, dapibus libero eu, finibus est. Nunc iaculis
@@ -94,14 +107,22 @@
     </section>
   </div>
 </main>
-<footer class="footer">
-  <nav class="footer__nav-left">
+<footer class="footer" role="contentinfo">
+  <nav
+    class="footer__nav-left"
+    role="navigation"
+    aria-label="Support, Privacy, and Terms Navigation"
+  >
     <a href="#" class="nav-link">Support</a>
     <a href="#" class="nav-link">Privacy</a>
     <a href="#" class="nav-link">Terms</a>
   </nav>
   <p>&copy; 2020 fire chai</p>
-  <nav class="footer__nav-right">
+  <nav
+    class="footer__nav-right"
+    role="navigation"
+    aria-label="Social Navigation"
+  >
     <a href="#"
       ><img
         src="./assets/instagram-icon.png"
