@@ -19,7 +19,7 @@
   --header-height: 55px;
   --header-height-adjust-ratio: 1;
   --content-width: 97vw;
-  --content-width-max: 900px;
+  --content-width-max: 1000px;
   --font-size-main: 1.2em;
   --font-size-heading-step: 0.1625;
   --padding-content-box: 0.5em;
@@ -226,6 +226,59 @@ h6 {
   flex-shrink: 1;
 }
 
+.shop-list {
+  --list-item-width: 325px;
+  grid-area: "history-events";
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--list-item-width));
+  gap: 5px 5px;
+  margin: calc(var(--padding-content-box) * 2) 0;
+}
+.shop-list {
+  --border-radius: 5px;
+}
+.shop-list .shop-list__item {
+  width: var(--list-item-width);
+  height: calc(var(--list-item-width) / 1.618);
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.shop-list__item .shop-list-item-title,
+.shop-list__item .shop-list-item-content,
+.shop-list__item .shop-list-item-buy-button {
+  border-color: var(--color-secondary1-stroke);
+  border-style: solid;
+}
+.shop-list__item .shop-list-item-title {
+  background-color: var(--color-secondary1);
+  color: var(--color-secondary1-headline);
+  font-weight: bold;
+  text-align: center;
+  border-width: 2px 2px 0 2px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.shop-list__item .shop-list-item-content {
+  color: var(--color-secondary1-sub-headline);
+  padding: var(--padding-content-box);
+  justify-self: flex-start;
+  height: 100%;
+  overflow: auto;
+  border-width: 0 2px;
+}
+.shop-list__item .shop-list-item-buy-button {
+  color: var(--color-primary);
+  background-color: var(--color-highlight);
+  width: 100%;
+  padding: var(--padding-input);
+  border-width: 0 2px 2px 2px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+.shop-list__item .shop-list-item-buy-button:before {
+  content: "Add to cart";
+}
+
 .footer {
   display: flex;
   justify-content: space-around;
@@ -269,5 +322,9 @@ h6 {
   .our-story {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .shop-list {
+    flex-direction: column;
   }
 }
