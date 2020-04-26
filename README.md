@@ -8,6 +8,8 @@ A simple responsive product landing page that shows love for a favorite beverage
 
 ## Demonstrated concepts
 
+**Main languages:** HTML, CSS
+
 - Responsive page with flex box and media query
 - CSS variables and calculations to simplify media query adjustments and long-term maintenance
 - Fixed header
